@@ -2,6 +2,8 @@ import React from 'react';
 // import React from 'react-native';
 // import owl from "./src/images/owl.jpeg";
 import { Button, View, Text, ImageBackground, StyleSheet } from 'react-native';
+import googleLogin from '../components/Back.js'
+
 class Login extends React.Component {
   static navigationOptions = {
     title: 'Login'
