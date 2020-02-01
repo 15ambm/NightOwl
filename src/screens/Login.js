@@ -1,24 +1,44 @@
 import React from 'react';
-import { Button, View, Text } from 'react-native';
+// import React from 'react-native';
+// import owl from "./src/images/owl.jpeg";
+import { Button, View, Text, ImageBackground, StyleSheet } from 'react-native';
 class Login extends React.Component {
   static navigationOptions = {
     title: 'Login'
    };
 render() {
  return (
-  <View style={{ 
-   flex: 1,
-   alignItems:'center',
-   justifyContent:'center'
-  }}>
-<Button title="Go to Profile screen"
-    onPress={() => {this.props.navigation.navigate('Profile');
-    //other function goes here ;
+
+<ImageBackground source={require('../images/owl.png')} style={styles.backgroundImage}>
+<View 
+style={{ 
+  flex: 1,
+  justifyContent: 'flex-end',
+  marginBottom: 90
+  }}
+  >
+  
+  <Button title="Go to Profile screen"
+    color="#f194ff"
+    onPress={() => {this.props.navigation.navigate('Profile')
+    
+    //; other function goes here ;
   }}
    />
-  </View>
-
+   
+ </View>
+ </ImageBackground>
 );
 }
 }
+
+
+// let { StyleSheet } = React;
+
+let styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover', // or 'stretch'
+  }
+});
 export default Login;
