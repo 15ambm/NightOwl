@@ -41,6 +41,20 @@ function addFriend(){
   firebase.database().ref('/users/'+user.email.replace(/\./g, "_") + "/friends").push(email.replace(/\./g, "_"));
 }
 
+function addToParty(friend){
+  console.log("Adding " + friend + " to your group");
+  firebase.database().ref('/users/' + user.email.replace(/\./g, "_") + "/party").push(friend.replace(/\./g, "_"));
+}
+
+function removeFromParty(friend){
+  console.log("Removing " + friend + " from your group");
+  var inParty = [];
+  firebase.database().ref('/users/'+ user.email.replace(/\./g, "_") + "/friends").on('value', function(snapshot){inParty = Object.values(snapshot.val())});
+  if(inParty.includes(friend)){
+    firebase.database().ref('/users/' + user.email.replace(/\./g, "_") + "/party/" + friend).remove());
+  }
+}
+
 //Displays status of all friends in real time
 function monitorFriends(){
   firebase.database().ref('/users/'+ friends[0]+"/status").on('value', function(snapshot){
