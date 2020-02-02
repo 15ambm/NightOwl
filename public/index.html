@@ -20,7 +20,7 @@
   </head>
   <body>
 
-    <button onclick="googleLogin()">
+    <button onclick="startSession()">
       Login with Google
     </button>
     <br>
@@ -32,17 +32,23 @@
       Cancel Help
     </button>
     <br>
-    <button onclick="getFriends()">
-      Retrieve Friends
-    </button>
-    <button onclick="displayFriends()">
-      Display Friends
+    <button onclick="monitorFriends()">
+      Monitor Friends
     </button>
     <br>
     <input type="text" id="friendEmail">
     <button onClick="addFriend()">
       Submit
     </button>
+    <h2>
+      Ted's Status:
+    </h2>
+    <h2 style="color:green" id="ted">safe</h2>
+    <h2>
+      Alex's Status:
+    </h2>
+    <h2 style="color:green" id="alex">safe</h2>
+
     <script src="app.js">
     </script>
   </body>
