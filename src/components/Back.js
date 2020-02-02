@@ -12,7 +12,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-var user = "";
+var userSession = "";
 var friends = []
 
 export async function gLogin(){
@@ -26,45 +26,55 @@ if (type === 'success') {
   let userInfoResponse = await fetch('https://www.googleapis.com/userinfo/v2/me', {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
+  // console.log(user.email);
+  userSession = user;
+  console.log("logged in");
+  console.log(JSON.stringify(userSession));
+  startSession();
 }
 }
 
-export async function googleLogin() {
-  //get google auth cridential
-  const {type, token} = await firebase.auth.GoogleAuthProvider.credential();
 
-  firebase.auth().signInWithCredential(provider).then(result => {
-  user = result.user;
-  //document.write("Welcome to Night Owl " + user.displayName);
-  console.log(JSON.stringify(result.user));
-  }).catch(console.log)
+function startSession() {
+  //Logs into google and populates user data
+
+  //Sets status of user to safe and drinks to 0 on session start
+  firebase.database().ref('/users/' + userSession.email.replace(/\./g, "_")).update({'status' : 'safe', 'drinks' : 0})
+
+  //Sets the friends variable to a list of friends emails
+  firebase.database().ref('/users/'+ userSession.email.replace(/\./g, "_") + "/friends").on('value', function(snapshot){
+    if(snapshot.val() != null){
+      friends = Object.values(snapshot.val());
+    }
+    console.log(friends);
+  });
 }
 
-
-
+// //Sets user's status to help
 // function sendHelp() {
 //   console.log("Send Help to " + user.displayName);
 //   firebase.database().ref('/users/' + user.email.replace(/\./g, "_")).update({'status' : 'help'});
 // }
 
+// //Sets user's status to safe
 // function cancelHelp() {
 //   console.log("Cancelling help to " + user.displayName);
 //   firebase.database().ref('/users/' + user.email.replace(/\./g, "_")).update({'status' : 'safe'});
 // }
 
-// function getFriends() {
-//   firebase.database().ref('/users/'+ user.email.replace(/\./g, "_") + "/friends").on('value', function(snapshot){
-//     console.log(snapshot.val());
-//     friends = snapshot.val();
-//   });
-// }
-
+// //Reads text from HTML text box and adds to friends list
 // function addFriend(){
 //   var email = document.getElementById('friendEmail').value;
 //   console.log("Adding friend with email: " + email);
 //   firebase.database().ref('/users/'+user.email.replace(/\./g, "_") + "/friends").push(email.replace(/\./g, "_"));
 // }
 
-// function displayFriends() {
-//   alert(friends.toString());
+// //Displays status of all friends in real time
+// function monitorFriends(){
+//   firebase.database().ref('/users/'+ friends[0]+"/status").on('value', function(snapshot){
+//     document.getElementById('ted').innerHTML = snapshot.val();
+//   });
+//   firebase.database().ref('/users/'+ friends[1]+"/status").on('value', function(snapshot){
+//     document.getElementById('alex').innerHTML = snapshot.val();
+//   });
 // }
