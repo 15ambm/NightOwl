@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, View, Text } from 'react-native';
+import {registerForPushNotification} from '../components/getPushToken'
+
 class Profile extends React.Component {
   static navigationOptions = {
     title: 'Profile'
@@ -14,7 +16,9 @@ class Profile extends React.Component {
 <Button title="Go to Login screen"
     onPress={() => this.props.navigation.navigate('Login')}
    />
-<Button title = "Help Notification" />
+<Button title = "Help Notification" 
+ onPress={() => registerForPushNotification()}
+/>
   </View>
 );
 }

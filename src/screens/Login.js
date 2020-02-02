@@ -28,10 +28,10 @@ style={{
     onPress={() => {
       // googleLogin();
       // this.
-      // gLogin();
+      gLogin();
       // console.log(pushToken);
       // global.pushToken = "";
-      registerForPushNotification();
+      // registerForPushNotification();
       this.props.navigation.navigate('Profile');
 
   }}
