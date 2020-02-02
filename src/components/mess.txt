@@ -1,0 +1,29 @@
+import * as firebase from 'firebase';
+const firebaseConfig = {
+  apiKey: "AIzaSyCFPoSc_OGc84P9Rky5R3IAacaWxMS42PY",
+  authDomain: "night-owl-50961.firebaseapp.com",
+  databaseURL: "https://night-owl-50961.firebaseio.com",
+  storageBucket: "night-owl-50961.appspot.com"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+// <script defer src="/__/firebase/7.8.0/firebase-app.js"></script>
+  // <!-- include only the Firebase features as you need -->
+  // <script defer src="/__/firebase/7.8.0/firebase-auth.js"></script>
+  // <script defer src="/__/firebase/7.8.0/firebase-database.js"></script>
+  // <script defer src="/__/firebase/init.js"></script>
+
+  // export async function googleLogin(){
+//   // logInAsync(config: LogInConfig): Promise<LogInResult>
+
+//   // First- obtain access token from Expo's Google API
+//   const { type, accessToken, user } = await Google.logInAsync(config);
+
+//   if (type === 'success') {
+//     // Then you can use the Google REST API
+//     let userInfoResponse = await fetch('https://www.googleapis.com/userinfo/v2/me', {
+//       headers: { Authorization: `Bearer ${accessToken}` },
+//     });
+//   }
+// }

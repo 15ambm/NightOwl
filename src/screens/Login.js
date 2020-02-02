@@ -2,7 +2,7 @@ import React from 'react';
 // import React from 'react-native';
 // import owl from "./src/images/owl.jpeg";
 import { Button, View, Text, ImageBackground, StyleSheet } from 'react-native';
-import googleLogin from '../components/Back.js'
+import {googleLogin, gLogin} from '../components/Back'
 
 class Login extends React.Component {
   static navigationOptions = {
@@ -22,9 +22,10 @@ style={{
   
   <Button title="Go to Profile screen"
     color="#f194ff"
-    onPress={() => {this.props.navigation.navigate('Profile')
-    
-    //; other function goes here ;
+    onPress={() => {
+      // googleLogin();
+      gLogin();
+      this.props.navigation.navigate('Profile');
   }}
    />
    
