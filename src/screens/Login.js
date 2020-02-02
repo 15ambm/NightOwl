@@ -3,6 +3,9 @@ import React from 'react';
 // import owl from "./src/images/owl.jpeg";
 import { Button, View, Text, ImageBackground, StyleSheet } from 'react-native';
 import {googleLogin, gLogin} from '../components/Back'
+// import '../components/Global';
+import {registerForPushNotification} from '../components/getPushToken'
+
 
 class Login extends React.Component {
   static navigationOptions = {
@@ -25,11 +28,24 @@ style={{
     onPress={() => {
       // googleLogin();
       // this.
-      gLogin();
+      // gLogin();
+      // console.log(pushToken);
+      // global.pushToken = "";
+      registerForPushNotification();
       this.props.navigation.navigate('Profile');
+
   }}
    />
-   
+   <Button title = "Help Notification" onPress={() => {
+      // googleLogin();
+      // this.
+      // gLogin();
+      // global.pushToken = "";
+      // global.pushToken = registerForPushNotification();
+      // console.log(pushToken);
+      // this.props.navigation.navigate('Profile');
+
+  }} />
  </View>
  </ImageBackground>
 );

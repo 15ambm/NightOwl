@@ -50,31 +50,31 @@ function startSession() {
   });
 }
 
-// //Sets user's status to help
-// function sendHelp() {
-//   console.log("Send Help to " + user.displayName);
-//   firebase.database().ref('/users/' + user.email.replace(/\./g, "_")).update({'status' : 'help'});
-// }
+//Sets user's status to help
+function sendHelp() {
+  console.log("Send Help to " + user.displayName);
+  firebase.database().ref('/users/' + user.email.replace(/\./g, "_")).update({'status' : 'help'});
+}
 
-// //Sets user's status to safe
-// function cancelHelp() {
-//   console.log("Cancelling help to " + user.displayName);
-//   firebase.database().ref('/users/' + user.email.replace(/\./g, "_")).update({'status' : 'safe'});
-// }
+//Sets user's status to safe
+function cancelHelp() {
+  console.log("Cancelling help to " + user.displayName);
+  firebase.database().ref('/users/' + user.email.replace(/\./g, "_")).update({'status' : 'safe'});
+}
 
-// //Reads text from HTML text box and adds to friends list
-// function addFriend(){
-//   var email = document.getElementById('friendEmail').value;
-//   console.log("Adding friend with email: " + email);
-//   firebase.database().ref('/users/'+user.email.replace(/\./g, "_") + "/friends").push(email.replace(/\./g, "_"));
-// }
+//Reads text from HTML text box and adds to friends list
+function addFriend(){
+  var email = document.getElementById('friendEmail').value;
+  console.log("Adding friend with email: " + email);
+  firebase.database().ref('/users/'+user.email.replace(/\./g, "_") + "/friends").push(email.replace(/\./g, "_"));
+}
 
-// //Displays status of all friends in real time
-// function monitorFriends(){
-//   firebase.database().ref('/users/'+ friends[0]+"/status").on('value', function(snapshot){
-//     document.getElementById('ted').innerHTML = snapshot.val();
-//   });
-//   firebase.database().ref('/users/'+ friends[1]+"/status").on('value', function(snapshot){
-//     document.getElementById('alex').innerHTML = snapshot.val();
-//   });
-// }
+//Displays status of all friends in real time
+function monitorFriends(){
+  firebase.database().ref('/users/'+ friends[0]+"/status").on('value', function(snapshot){
+    document.getElementById('ted').innerHTML = snapshot.val();
+  });
+  firebase.database().ref('/users/'+ friends[1]+"/status").on('value', function(snapshot){
+    document.getElementById('alex').innerHTML = snapshot.val();
+  });
+}

@@ -14,6 +14,7 @@ class Profile extends React.Component {
 <Button title="Go to Login screen"
     onPress={() => this.props.navigation.navigate('Login')}
    />
+<Button title = "Help Notification" />
   </View>
 );
 }
