@@ -24,6 +24,7 @@ style={{
     color="#f194ff"
     onPress={() => {
       // googleLogin();
+      // this.
       gLogin();
       this.props.navigation.navigate('Profile');
   }}

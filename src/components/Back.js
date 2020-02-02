@@ -16,10 +16,10 @@ var user = "";
 var friends = []
 
 export async function gLogin(){
-
-  iosClientID =  '443939003384-737sv9ne47b2o0hdae70tv0psvej887l.apps.googleusercontent.com';
-
-  const { type, accessToken, user } = await Google.logInAsync(iosClientID);
+  const { type, accessToken, user } = await Google.logInAsync({
+    iosClientId: '443939003384-737sv9ne47b2o0hdae70tv0psvej887l.apps.googleusercontent.com',
+    scopes: ['profile','email']
+  });
 
 if (type === 'success') {
   // Then you can use the Google REST API
